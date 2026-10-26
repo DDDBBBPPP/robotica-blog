@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Robótica{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="{% url 'blog:home' %}" aria-label="Robótica, inicio">
+                <span class="brand-mark" aria-hidden="true">R</span>
+                <span>
+                    <strong class="site-title">Robótica</strong>
+                    <small class="site-tagline">Ideas, máquinas y futuro</small>
+                </span>
+            </a>
+            <nav aria-label="Navegación principal">
+                <a class="{% if request.resolver_match.url_name == 'home' %}is-active{% endif %}" href="{% url 'blog:home' %}">Inicio</a>
+                <a class="{% if request.resolver_match.url_name == 'about' %}is-active{% endif %}" href="{% url 'blog:about' %}">Sobre mí</a>
+            </nav>
+        </div>
+    </header>
+    <main id="main-content" class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="container">Un blog sobre robótica.</div>
+    </footer>
+</body>
+</html>

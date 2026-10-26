@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load blog_content %}
+
+{% block title %}Sobre mí | Robótica{% endblock %}
+
+{% block content %}
+<article class="article article-detail" aria-labelledby="about-title">
+    <p class="eyebrow"><span class="eyebrow-dot"></span> El autor</p>
+    <h1 id="about-title">Sobre mí</h1>
+    {% if about_page %}
+        <div class="article-content">{{ about_page.content|rich_text }}</div>
+    {% else %}
+        <p class="empty-state">La presentación del autor estará disponible pronto.</p>
+    {% endif %}
+</article>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio | Robótica{% endblock %}
+
+{% block content %}
+<section class="intro" aria-labelledby="page-title">
+    <div class="intro-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Blog de robótica</p>
+        <h1 id="page-title">Pensar el futuro,<br><em>construirlo</em> hoy.</h1>
+        <p class="intro-lead">Un espacio para entender las máquinas que están cambiando nuestra forma de vivir, trabajar y crear.</p>
+    </div>
+    <div class="intro-orbit" aria-hidden="true">
+        <span class="orbit orbit-one"></span>
+        <span class="orbit orbit-two"></span>
+        <span class="orbit-core">R</span>
+    </div>
+</section>
+
+<section aria-labelledby="articles-title">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Desde el laboratorio</p>
+            <h2 id="articles-title">Artículos recientes</h2>
+        </div>
+        <span class="article-count">{{ articles|length }} {% if articles|length == 1 %}artículo{% else %}artículos{% endif %}</span>
+    </div>
+    {% if articles %}
+        <div class="article-list">
+            {% for article in articles %}
+                <article class="article-card">
+                    <div class="card-topline">
+                        <span class="card-number">0{{ forloop.counter }}</span>
+                        <p class="meta">{{ article.published_at|date:'j \d\e F \d\e Y' }}</p>
+                    </div>
+                    <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+                    <p class="card-excerpt">{{ article.excerpt }}</p>
+                    <div class="card-footer">
+                        <span class="author">{{ article.author }}</span>
+                        <a class="read-link" href="{{ article.get_absolute_url }}" aria-label="Leer artículo: {{ article.title }}">Leer <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty-state">Todavía no hay artículos publicados.</p>
+    {% endif %}
+</section>
+{% endblock %}

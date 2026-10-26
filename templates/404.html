@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Página no encontrada | Robótica{% endblock %}
+
+{% block content %}
+<section class="article" aria-labelledby="not-found-title">
+    <p class="eyebrow">Error 404</p>
+    <h1 id="not-found-title">Página no encontrada</h1>
+    <p>El contenido que buscas no existe o ya no está disponible.</p>
+    <p><a class="back-link" href="{% url 'blog:home' %}">Volver a la portada</a></p>
+</section>
+{% endblock %}

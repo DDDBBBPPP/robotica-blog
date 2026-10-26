@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load blog_content %}
+
+{% block title %}{{ article.title }} | Robótica{% endblock %}
+
+{% block content %}
+<article class="article article-detail" aria-labelledby="article-title">
+    <p class="eyebrow"><span class="eyebrow-dot"></span> Artículo</p>
+    <p class="meta">{{ article.published_at|date:'j \d\e F \d\e Y' }} · {{ article.author }}</p>
+    <h1 id="article-title">{{ article.title }}</h1>
+    <div class="article-content">{{ article.content|rich_text }}</div>
+</article>
+<p class="back-row"><a class="back-link" href="{% url 'blog:home' %}"><span aria-hidden="true">←</span> Volver a los artículos</a></p>
+{% endblock %}
