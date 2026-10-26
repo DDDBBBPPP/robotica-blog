@@ -38,9 +38,6 @@ archivos generados están excluidos de Git.
 Abre PowerShell en la raíz del repositorio:
 
 ```powershell
-uv python install 3.13
-uv venv --python 3.13
-.\.venv\Scripts\Activate.ps1
 uv sync
 ```
 
